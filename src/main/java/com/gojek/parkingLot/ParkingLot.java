@@ -166,7 +166,7 @@ public class ParkingLot {
 
             }
         }else{
-            System.out.println(String.format("Not found"));
+            System.out.println(String.format("Not Found"));
 
         }
 
@@ -192,7 +192,7 @@ public class ParkingLot {
 
             }
         }else{
-            System.out.println(String.format("Not found"));
+            System.out.println(String.format("Not Found"));
 
         }
 
@@ -202,7 +202,7 @@ public class ParkingLot {
     public void getSlotNumberByReg(String regNum){
         Vehicle vh =parkedVehicleByRegHashMap.getOrDefault(regNum, null);
         if (vh == null){
-            System.out.println("Not found");
+            System.out.println("Not Found");
         }
         else{
             System.out.println( vh.getSlotNumber());
