@@ -15,8 +15,7 @@ public class ParkingTicket {
         this.setParkingSlotNumber(slotNumber);
         this.setParkingStatus(ParkingTicketStatus.ACTIVE);
     }
-
-   public  void setParkingSlotNumber(int slotNumber){
+    public  void setParkingSlotNumber(int slotNumber){
        this.parkingSlotNumber = slotNumber;
    }
 

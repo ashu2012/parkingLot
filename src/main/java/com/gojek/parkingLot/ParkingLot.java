@@ -21,8 +21,8 @@ public class ParkingLot {
     // to implement leave function in O(1)
     private HashMap<Integer, ParkingSpot> usedParkingSpot;
 
-    // all active parking vehicles, identified by their registration
-    //Slot number in which a car with a given registration number is parked.
+    // all active parking vehicles, identified by their (registration->
+    //Slot number )in which a car with a given registration number is parked.
     //RegNo.->vehicles -> ParkingTicket -> SLot number
     //Query --> Slot number in which a car with a given registration number is parked
     // above query handel in O(1) ;
@@ -64,7 +64,7 @@ public class ParkingLot {
         this.currentCarCount =0;
 
         availableSlotsHeap = new PriorityQueue<ParkingSpot>(maxCarCount);
-        for(int slotId =0 ; slotId< maxCarCount;slotId++){
+        for(int slotId =1 ; slotId<= maxCarCount;slotId++){
             ParkingSpot ps = new CarSpot( slotId);
             availableSlotsHeap.add(ps);
         }
@@ -83,11 +83,11 @@ public class ParkingLot {
         vehicle.setRegistration(regNum);
         vehicle.setColour(colour);
         if (this.isFull(vehicle.getType())) {
-            System.out.println(String.format("Sorry, parking lot is full"));
+            System.out.println("Sorry, parking lot is full");
             throw new ParkingFullException("Sorry, parking lot is full");
         }
         //get latest slot available from Min heap
-        ParkingSpot slot = availableSlotsHeap.peek();
+        ParkingSpot slot = availableSlotsHeap.poll();
         ParkingTicket ticket = new ParkingTicket(slot.getSpotNumber());
         slot.assignVehicle(vehicle);
         vehicle.assignTicket(ticket);
@@ -154,10 +154,11 @@ public class ParkingLot {
         if(!vehicleList.isEmpty()){
             int size= vehicleList.size();
             int count =0;
+            //System.out.println();
             for(Vehicle vh : vehicleList){
                 count++;
                 if (count == size){
-                    System.out.print(String.format("%s",  vh.getRegistration())  );
+                    System.out.println(String.format("%s",  vh.getRegistration())  );
                 }
                 else{
                     System.out.print(String.format("%s,",  vh.getRegistration())  );
@@ -165,7 +166,7 @@ public class ParkingLot {
 
             }
         }else{
-            System.out.print(String.format("Not found"));
+            System.out.println(String.format("Not found"));
 
         }
 
@@ -178,10 +179,12 @@ public class ParkingLot {
         if(!vehicleList.isEmpty()){
             int size= vehicleList.size();
             int count =0;
+            //System.out.println();
             for(Vehicle vh : vehicleList){
                 count++;
                 if (count == size){
-                    System.out.print(String.format("%s",  vh.getSlotNumber())  );
+                    System.out.println(String.format("%s",  vh.getSlotNumber())  );
+                    //System.out.println();
                 }
                 else{
                     System.out.print(String.format("%s,",  vh.getSlotNumber())  );
@@ -189,7 +192,7 @@ public class ParkingLot {
 
             }
         }else{
-            System.out.print(String.format("Not found"));
+            System.out.println(String.format("Not found"));
 
         }
 
@@ -202,7 +205,7 @@ public class ParkingLot {
             System.out.println("Not found");
         }
         else{
-            System.out.println(String.format("%d", vh.getSlotNumber()));
+            System.out.println( vh.getSlotNumber());
         }
     }
 

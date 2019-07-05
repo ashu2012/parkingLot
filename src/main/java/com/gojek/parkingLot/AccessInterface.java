@@ -28,7 +28,7 @@ class Park implements AccessInterface {
         try {
             parkingLot.getNewParkingTicket(regNum,colour);
         } catch (ParkingFullException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
         }
     }
 };
